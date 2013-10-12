@@ -1,0 +1,24 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="function" >
+<input ms-duplex="nick" />
+<p>{%qq()%}</p>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.define("function", function(vm) {
+    vm.nick = "司徒正美"
+    vm.qq = function() {
+        return vm.nick + "是群主"
+    }
+})
+</script>
+{{end script}}

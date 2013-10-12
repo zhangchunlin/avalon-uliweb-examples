@@ -1,0 +1,42 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block body_tag}}<body ms-controller="xxx">{{end}}
+
+{{block content}}
+<div ms-with="obj">
+    <div>{%$key%} {%$val%}</div>
+</div>
+<hr/>
+<div ms-with="obj">
+    <div>{%$key%} {%$val%}</div>
+</div>
+<hr/>
+<div ms-with="obj">
+    <div>{%$key%} {%$val%}</div>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+var a = avalon.define("xxx", function(vm) {
+    vm.obj = {
+        aaa: "xxx",
+        bbb: "yyy",
+        ccc: "zzz"
+    }
+    vm.first = "司徒正美"
+})
+setTimeout(function() {
+    a.obj.aaa = "7777777777"
+    a.first = "清风火忌"
+}, 1000)
+setTimeout(function() {
+    a.obj.bbb = "8888888"
+}, 3000)
+</script>
+{{end script}}

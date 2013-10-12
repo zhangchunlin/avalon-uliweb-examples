@@ -1,0 +1,31 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="box">
+      <div style=" background: #a9ea00;" ms-css-width="w" ms-css-height="h"  ms-click="click"></div>
+      <p>{% w %} x {% h %}</p>
+      <p>W: <input type="text" ms-model="w" data-event="change"/></p>
+      <p>H: <input type="text" ms-model="h" /></p>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.ready(function() {
+     avalon.define("box", function(vm) {
+         vm.w = 100;
+         vm.h = 100;
+         vm.click = function() {
+             vm.w = parseInt(vm.w) + 10;
+             vm.h = parseInt(vm.h) + 10;
+         }
+     })
+     avalon.scan()
+ })
+</script>
+{{end script}}

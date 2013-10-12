@@ -1,0 +1,18 @@
+<!doctype html>
+{{block html_tag}}<html>{{end}}
+  <head>
+    <meta charset="utf-8">
+    {{block stylecss}}{{end stylecss}}
+    <script>
+    //http://rubylouvre.github.io/mvvm/avalon.html.html
+    avalon.config({
+       interpolate: ["{%", "%}"]
+    })
+    </script>
+    {{block script}}{{end script}}
+  </head>
+  {{block body_tag}}<body>{{end}}
+  {{block content}}{{end content}}
+  {{use "avalon"}}
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="test">
+     <div ms-bind="aaa:callback"></div>
+     <button ms-click="one">点我</button>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.define("test", function(vm) {
+     vm.aaa = 1111;
+     vm.callback = function() {
+         this.innerHTML = vm.aaa
+     }
+     vm.one = function() {
+         vm.aaa = new Date - 0
+     }
+ });
+</script>
+{{end script}}

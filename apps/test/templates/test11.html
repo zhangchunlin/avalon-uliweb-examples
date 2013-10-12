@@ -1,0 +1,22 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="test">
+    <select ms-each-el="array">
+        <option ms-value="el.value">{%$index%}、{%el.text%}</option>
+    </select>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.define("test", function(vm) {
+    vm.array = [{value: "aaa", text: "111"}, {value: "bbb", text: "222"}, {value: "bbb", text: "333"}]
+})
+</script>
+{{end script}}

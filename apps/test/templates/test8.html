@@ -1,0 +1,23 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="test">
+    <div><em>用于测试是否被测除</em>xxxx{%text%}yyyy</div>
+    <div><em>用于测试是否被测除</em>xxxx{%text|html%}yyyy</div>
+    <div ms-text="text"><em>用于测试是否被测除</em>xxxx yyyy</div>
+    <div ms-html="text"><em>用于测试是否被测除</em>xxxx yyyy</div>
+</div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.define("test", function(vm) {
+     vm.text = "<b> 1111  </b>"
+})
+</script>
+{{end script}}

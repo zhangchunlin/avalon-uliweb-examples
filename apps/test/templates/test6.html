@@ -1,0 +1,21 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+</style>
+{{end stylecss}}
+
+{{block content}}
+<p ms-controller="test" ms-click="click">{% a %}</p>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.define("test", function(vm) {
+    vm.a = 'click me';
+    vm.click = function() {
+        vm.a = new Date - 0
+    }
+})
+</script>
+{{end script}}
