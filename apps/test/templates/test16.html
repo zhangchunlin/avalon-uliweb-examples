@@ -6,7 +6,6 @@
 {{end stylecss}}
 
 {{block content}}
-{{use "jquery"}}
 <div ms-controller="main" ms-click="click">
       <p>
           <a href="#" >点击我</a>
@@ -16,10 +15,14 @@
 
 {{block script}}
 <script>
-avalon.modules.jquery = {
-    exports: jQuery,
-    state: 2
-}
+avalon.config({
+    alias: {
+        jquery: {
+            exports: "jQuery",
+            src: "http://libs.baidu.com/jquery/1.9.0/jquery.js"
+        }
+    }
+})
 require('jquery,ready!', function($) {
     avalon.log('加载jq了啊……')
     $.ajaxSetup({

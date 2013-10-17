@@ -1,0 +1,97 @@
+{{extend "test.html"}}
+
+{{block stylecss}}
+<style type="text/css">
+.grid table{
+    border:1px solid #000;
+    width:500px;
+    border-collapse: collapse;
+}
+.grid button{
+    width:400px;
+    background: orange;
+}
+.grid table th, .grid table td{
+    border:1px solid #000;
+    padding: 2px 5px;
+}
+</style>
+{{end stylecss}}
+
+{{block content}}
+<div ms-controller="grid" class="grid" >
+      <div>
+          <p> <input ms-duplex="id">
+              <input ms-duplex="name">
+              <input ms-duplex="score" data-event="change"></p>
+          <p><button ms-click="add"> add</button></p>
+      </div>
+      <p>共{%array.size()%}条------------------合计{%total%}分</p>
+      <table>
+          <thead>
+              <tr>
+                  <th>ID</th> <th>姓名</th> <th>分数</th> <th>操作</th>
+              </tr>
+          </thead>
+        
+          <tbody ms-each-el="array">
+              <tr>
+                  <td>{%el.id%}</td>
+                  <td>{%el.name%}</td>
+                  <td>{%el.score%}</td>
+                  <td align="center"><a ms-click="$remove" href="javascript:void(0)">移除</a></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+{{end content}}
+
+{{block script}}
+<script>
+avalon.ready(function() {
+      var model = avalon.define('grid', function(vm) {
+          vm.id = "" 
+          vm.name = ""
+          vm.score = 0
+          vm.total = 0
+
+          vm.add = function() {
+             if(vm.id && vm.name ){
+                 vm.array.push({
+                    id: vm.id,
+                    name: vm.name,
+                    score: vm.score
+                 })
+             }
+          }
+          vm.array = [
+              {id: "d1", name: "李世民", score: 67},
+              {id: "d2", name: "赢政", score: 90}
+          ]
+      });
+      model.$watch("score", function(a) {
+          if (isFinite(a)) {
+              var a = Number(a)
+              a = a > 100 ?  100 : a < 0 ? 0 : a//强制转换为0~100间
+              model.score = a
+          } else {
+              model.score = ""
+          }
+      })
+      model.array.$watch("length", function() {
+          var a = 0
+          model.array.forEach(function(el) {
+              a += el.score//求得总数
+          })
+          model.total = a;
+          model.id = ""
+          model.name = ""
+          model.score = ""
+
+      })
+
+      avalon.scan();
+  });
+
+</script>
+{{end script}}
