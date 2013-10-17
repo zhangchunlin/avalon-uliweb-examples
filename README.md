@@ -3,9 +3,9 @@ avalon-uliweb-examples
 
 Avalon examples using uliweb
 
-related link
+links
 ======================
-* [Avalon on github](https://github.com/RubyLouvre/avalon)
+* [Avalon](https://github.com/RubyLouvre/avalon)
 * [官方手册](http://rubylouvre.github.io/mvvm/)
 * [入门教程](http://www.cnblogs.com/rubylouvre/p/3181291.html)
 * [Uliweb](https://github.com/limodou/uliweb), [Uliweb doc](http://limodou.github.io/uliweb-doc/)
