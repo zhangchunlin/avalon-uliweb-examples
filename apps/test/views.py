@@ -1,5 +1,6 @@
 #coding=utf-8
 from uliweb import expose, functions
+from uliweb.core.template import get_templatefile
 
 #testlink
 def tl(r):
@@ -15,5 +16,7 @@ def index():
 
 @expose('/test<id>')
 def test(id):
-    response.template = "test"+id+".html"
-    return {}
+    response.template = fn = "test"+id+".html"
+    if get_templatefile(fn, application.template_dirs)==None:
+        return redirect("test1")
+    return {"testid":int(id)}

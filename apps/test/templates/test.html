@@ -12,6 +12,13 @@
     {{block script}}{{end script}}
   </head>
   {{block body_tag}}<body>{{end}}
+  {{if testid>1:}}
+  <a href="/test{{='%d'%(testid-1)}}">last</a>
+  {{else:}}
+  last
+  {{pass}}
+  <a href="/">home</a> <a href="/test{{='%d'%(testid+1)}}">next</a>
+  <hr />
   {{block content}}{{end content}}
   {{use "avalon"}}
   </body>
