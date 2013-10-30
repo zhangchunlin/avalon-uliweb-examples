@@ -3,13 +3,8 @@
   <head>
     <meta charset="utf-8">
     {{block stylecss}}{{end stylecss}}
-    <script>
-    //http://rubylouvre.github.io/mvvm/avalon.html.html
-    avalon.config({
-       interpolate: ["{%", "%}"]
-    })
-    </script>
     {{block script}}{{end script}}
+    <title>Avalon uliweb examples:test{{<<"%d"%(testid)}}</title>
   </head>
   {{block body_tag}}<body>{{end}}
   {{if testid>1:}}

@@ -14,9 +14,9 @@ def tl(r):
 def index():
     return {"tl":tl}
 
-@expose('/test<id>')
-def test(id):
-    response.template = fn = "test"+id+".html"
+@expose('/test<tid>')
+def test(tid):
+    response.template = fn = "test"+tid+".html"
     if get_templatefile(fn, application.template_dirs)==None:
         return redirect("test1")
-    return {"testid":int(id)}
+    return {"testid":int(tid)}
