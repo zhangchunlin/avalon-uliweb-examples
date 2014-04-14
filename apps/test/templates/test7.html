@@ -6,14 +6,19 @@
 {{end stylecss}}
 
 {{block content}}
-<script type="text/avalon" id="tpl">
-    here, {% 1 + 1 %}
+<script type="avalon" id="tpl">
+    here, {% 3 + 6 * 5  %}
 </script>
-
-<div  ms-include="'tpl'"></div>
+<div ms-controller="test">
+    <p>{%xxx%}</p>
+    <div ms-include="'tpl'"></div>
+</div>
 {{end content}}
 
 {{block script}}
 <script>
+    avalon.define("test", function(vm) {
+        vm.xxx = "引入内部模板"
+    })
 </script>
 {{end script}}
